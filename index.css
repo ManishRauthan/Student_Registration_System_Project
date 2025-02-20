@@ -33,7 +33,7 @@ input {
   margin: 10px;
   border-radius: 15px;
   border-color: rgb(101, 113, 122);
-  color: green;
+  color: rgb(0, 0, 0);
 }
 button {
   padding: 10px 20px;
@@ -67,4 +67,7 @@ td {
 thead {
   background: #343a40;
   color: white;
+}
+#result {
+  background-color: rgba(219, 232, 238, 0.637);
 }
