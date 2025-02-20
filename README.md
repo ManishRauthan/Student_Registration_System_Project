@@ -10,4 +10,4 @@ A simple and efficient **Student Registration System** built using HTML, CSS, an
 
 ## 🛠️ Technologies Used  
 - **Frontend:** HTML, CSS, JavaScript  
-- **Storage:** Local Storage  
+- **Storage:** Local Storage 
