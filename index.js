@@ -7,6 +7,29 @@ const addbtn = document.getElementById("add");
 const result = document.getElementById("result");
 
 let editonclick = null;
+// Get stored students from localStorage
+function loadData() {
+  let students = JSON.parse(localStorage.getItem("users")) || [];
+  students.forEach((student) => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td class="studentname">${student.name}</td>
+      <td class="studentmail">${student.mail}</td>
+      <td class="studentclass">${student.class}</td>
+      <td class="rollnumber">${student.rollnumber}</td>
+      <td>
+        <button class="edit-btn">Edit</button>
+        <button class="delete-btn">Delete</button>
+      </td>
+    `;
+
+    result.appendChild(row);
+  });
+}
+
+// for loading data on reloading
+window.onload = loadData;
 
 // Function to add new student data
 function onClick() {
@@ -56,11 +79,10 @@ function onClick() {
     // Append row to table
     result.appendChild(row);
 
-    // localStorage.setItem(
-    //   "key",
-    //   `${studentvalue} ${mailvalue}${classsvalue}${rollvalue}`
-    // );
+    //  function for storing the data inside local storage
+    saveData(studentvalue, mailvalue, classsvalue, rollvalue);
   }
+
   // Clear input fields
   studentname.value = "";
   studentmail.value = "";
@@ -90,6 +112,21 @@ function updateonClick(e) {
   }
 }
 
-// Attach event listener to the add button
+// function to storage data in local storage
+function saveData(name, mail, studentclass, rollnumber) {
+  const student = {
+    name: name,
+    mail: mail,
+    class: studentclass,
+    rollnumber: rollnumber,
+  };
+
+  let students = JSON.parse(localStorage.getItem("users")) || [];
+
+  students.push(student);
+
+  localStorage.setItem("users", JSON.stringify(students));
+}
+
 addbtn.addEventListener("click", onClick);
 result.addEventListener("click", updateonClick);
